@@ -1,0 +1,1769 @@
+file 121821 1701402836                                          
+version 3
+run Aodv-0-20231201-10:46:57-15632
+attr configname Aodv
+attr datetime 20231201-10:46:57
+attr datetimef 20231201-104657
+attr experiment Aodv
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network ManetprotocolsShowcaseB
+attr processid 15632
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../images
+config sim-time-limit 100s
+config extends MobileNodesBase
+config *.*.routingApp.typename Aodv
+config *.*.routingApp.activeRouteTimeout 1s
+config *.*.routingApp.deletePeriod 0.5s
+config *.visualizer.*.routingTableVisualizer[0].displayRoutingTables true
+config *.visualizer.*.routingTableVisualizer[0].destinationFilter "\"destination\""
+config network ManetprotocolsShowcaseB
+config **.transmitter.power 1mW
+config *.node*.mobility.typename LinearMobility
+config *.node*.mobility.initialMovementHeading uniform(0deg,360deg)
+config *.node*.mobility.speed 25mps
+config **.constraintAreaMaxX 500m
+config **.constraintAreaMaxY 500m
+config **.constraintAreaMinX 0m
+config **.constraintAreaMinY 0m
+config *.visualizer.*.routingTableVisualizer[0].displayLabels false
+config *.visualizer.*.routingTableVisualizer[0].displayRoutesIndividually false
+config *.visualizer.*.routingTableVisualizer[0].lineShift 0
+config *.visualizer.*.networkRouteVisualizer[0].displayRoutes true
+config *.visualizer.*.networkRouteVisualizer[0].packetFilter "\"*ping*\""
+config *.visualizer.*.interfaceTableVisualizer[0].displayInterfaceTables true
+config *.visualizer.*.interfaceTableVisualizer[0].format "\"%a/%l\""
+config *.source.numApps 1
+config *.source.app[0].typename PingApp
+config *.source.app[0].destAddr "\"destination\""
+config *.source.app[0].printPing true
+config *.visualizer.*.numDataLinkVisualizers 5
+config *.visualizer.*.dataLinkVisualizer[*].activityLevel "\"peer\""
+config *.visualizer.*.dataLinkVisualizer[*].displayLinks true
+config *.visualizer.*.dataLinkVisualizer[0].packetFilter "\"aodv::Rreq\""
+config *.visualizer.*.dataLinkVisualizer[0].*Color "\"orange\""
+config *.visualizer.*.dataLinkVisualizer[1].packetFilter "\"ping* or UDP*\""
+config *.visualizer.*.dataLinkVisualizer[1].*Color "\"yellow\""
+config *.visualizer.*.dataLinkVisualizer[2].packetFilter "\"aodv::Rrep\""
+config *.visualizer.*.dataLinkVisualizer[2].*Color "\"blue\""
+config *.visualizer.*.dataLinkVisualizer[3].packetFilter "\"aodv::Rerr\""
+config *.visualizer.*.dataLinkVisualizer[3].*Color "\"red\""
+config *.visualizer.*.dataLinkVisualizer[4].packetFilter "\"Hello\""
+config *.visualizer.*.dataLinkVisualizer[4].*Color "\"green\""
+config **.wlan[*].bitrate 24Mbps
+config *.configurator.addStaticRoutes false
+config **.netmaskRoutes "\"\""
+config **.arp.typename GlobalArp
+
+vector 0 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 1 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 2 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 3 ManetprotocolsShowcaseB.source.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 4 ManetprotocolsShowcaseB.source.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 5 ManetprotocolsShowcaseB.source.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 6 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 7 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 8 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 9 ManetprotocolsShowcaseB.node2.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 10 ManetprotocolsShowcaseB.node2.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 11 ManetprotocolsShowcaseB.node2.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 12 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 13 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 14 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 15 ManetprotocolsShowcaseB.destination.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 16 ManetprotocolsShowcaseB.destination.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 17 ManetprotocolsShowcaseB.destination.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 18 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 19 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 20 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 21 ManetprotocolsShowcaseB.manetRouter.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 22 ManetprotocolsShowcaseB.manetRouter.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 23 ManetprotocolsShowcaseB.manetRouter.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 24 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 25 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 26 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 27 ManetprotocolsShowcaseB.manetRouter1.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 28 ManetprotocolsShowcaseB.manetRouter1.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 29 ManetprotocolsShowcaseB.manetRouter1.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 30 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 31 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 32 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 33 ManetprotocolsShowcaseB.manetRouter4.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 34 ManetprotocolsShowcaseB.manetRouter4.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 35 ManetprotocolsShowcaseB.manetRouter4.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 36 ManetprotocolsShowcaseB.source.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 37 ManetprotocolsShowcaseB.source.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 38 ManetprotocolsShowcaseB.node2.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 39 ManetprotocolsShowcaseB.node2.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 40 ManetprotocolsShowcaseB.destination.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 41 ManetprotocolsShowcaseB.destination.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 42 ManetprotocolsShowcaseB.manetRouter.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 43 ManetprotocolsShowcaseB.manetRouter.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 44 ManetprotocolsShowcaseB.manetRouter1.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 45 ManetprotocolsShowcaseB.manetRouter1.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 46 ManetprotocolsShowcaseB.manetRouter4.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 47 ManetprotocolsShowcaseB.manetRouter4.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 48 ManetprotocolsShowcaseB.source.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 49 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 50 ManetprotocolsShowcaseB.node2.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 51 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 52 ManetprotocolsShowcaseB.destination.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 53 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 54 ManetprotocolsShowcaseB.manetRouter.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 55 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 56 ManetprotocolsShowcaseB.manetRouter1.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 57 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 58 ManetprotocolsShowcaseB.manetRouter4.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 59 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 60 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 61 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 62 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 63 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 64 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 65 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 66 ManetprotocolsShowcaseB.source.app[0] pingTxSeq:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "ping tx seq"
+vector 67 ManetprotocolsShowcaseB.source.udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 68 ManetprotocolsShowcaseB.source.wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 69 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 70 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 71 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 72 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 73 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 74 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 75 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 76 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 77 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 78 ManetprotocolsShowcaseB.source.wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 79 ManetprotocolsShowcaseB.source.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 80 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 81 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 82 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 83 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 84 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 85 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 86 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 87 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 88 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 89 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 90 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 91 ManetprotocolsShowcaseB.manetRouter1.udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 92 ManetprotocolsShowcaseB.node2.wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 93 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 94 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 95 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 96 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 97 ManetprotocolsShowcaseB.node2.wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 98 ManetprotocolsShowcaseB.node2.udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 99 ManetprotocolsShowcaseB.node2.udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 100 ManetprotocolsShowcaseB.node2.wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 101 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 102 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 103 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 104 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 105 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 106 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 107 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 108 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 109 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 110 ManetprotocolsShowcaseB.node2.wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 111 ManetprotocolsShowcaseB.node2.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 112 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 113 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 114 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 115 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 116 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 117 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 118 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 119 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 120 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 121 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 122 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 123 ManetprotocolsShowcaseB.manetRouter4.udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 124 ManetprotocolsShowcaseB.source.wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 125 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 126 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 127 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 128 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 129 ManetprotocolsShowcaseB.source.wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 130 ManetprotocolsShowcaseB.source.udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 131 ManetprotocolsShowcaseB.manetRouter1.udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 132 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 133 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 134 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 135 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 136 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 137 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 138 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 139 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 140 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 141 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 142 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 143 ManetprotocolsShowcaseB.manetRouter1.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 144 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 145 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 146 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 147 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 148 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 149 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 150 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 151 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 152 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 153 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 154 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 155 ManetprotocolsShowcaseB.manetRouter.udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 156 ManetprotocolsShowcaseB.manetRouter4.udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 157 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 158 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 159 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 160 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 161 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 162 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 163 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 164 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 165 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 166 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 167 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 168 ManetprotocolsShowcaseB.manetRouter4.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 169 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 170 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 171 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 172 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 173 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 174 ManetprotocolsShowcaseB.destination.wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 175 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 176 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 177 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 178 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 179 ManetprotocolsShowcaseB.destination.wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 180 ManetprotocolsShowcaseB.destination.udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 181 ManetprotocolsShowcaseB.destination.udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 182 ManetprotocolsShowcaseB.destination.wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 183 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 184 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 185 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 186 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 187 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 188 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 189 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 190 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 191 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 192 ManetprotocolsShowcaseB.destination.wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 193 ManetprotocolsShowcaseB.destination.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 194 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 195 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 196 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 197 ManetprotocolsShowcaseB.destination.wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 198 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 199 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 200 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 201 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 202 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 203 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 204 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 205 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 206 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 207 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 208 ManetprotocolsShowcaseB.node2.wlan[0].mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 209 ManetprotocolsShowcaseB.node2.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 210 ManetprotocolsShowcaseB.manetRouter.udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 211 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 212 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 213 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 214 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 215 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 216 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 217 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 218 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 219 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 220 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 221 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 222 ManetprotocolsShowcaseB.manetRouter.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 223 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 224 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 225 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 226 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 227 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 228 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 229 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 230 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 231 ManetprotocolsShowcaseB.destination.wlan[0].mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 232 ManetprotocolsShowcaseB.destination.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 233 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 234 ManetprotocolsShowcaseB.node2.wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 235 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 236 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 237 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 238 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 239 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 240 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 241 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 242 ManetprotocolsShowcaseB.source.wlan[0].mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 243 ManetprotocolsShowcaseB.source.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 244 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 245 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 246 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 247 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 248 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 249 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 250 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 251 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+0	68082 136 0 464 0 1.179689874817 7 0 1 3 3
+1	68218 136 0 464 0 1.179689874817 7 0 1 3 3
+2	68354 208 0 463 0 1.179689874817 10 0 1 4 4
+3	68562 128 0 435 0 1.179535874817 6 0 5 15 55
+4	68690 9 0 0 0 0 1 0 0 0 0
+5	68699 9 0 0 0 0 1 0 0 0 0
+6	68708 110 0 311 0 1.17103523367 6 0 1 2 2
+7	68818 110 0 311 0 1.17103523367 6 0 1 2 2
+8	68928 111 0 302 0 1.17097723367 6 0 1 2 2
+9	69039 127 0 253 0 1.16979439313 6 0 5 15 55
+10	69166 10 0 0 0 0 1 0 0 0 0
+11	69176 10 0 0 0 0 1 0 0 0 0
+12	69186 69 0 290 0 1.170327125752 4 0 1 1 1
+13	69255 69 0 290 0 1.170327125752 4 0 1 1 1
+14	69324 68 0 257 0 1.17022428517 4 0 1 1 1
+15	69392 34 0 237 0 1.16979428517 2 0 1 1 1
+16	69426 10 0 0 0 0 1 0 0 0 0
+17	69436 10 0 0 0 0 1 0 0 0 0
+18	69446 70 0 347 0 1.172664595124 4 0 1 1 1
+19	69516 70 0 347 0 1.172664595124 4 0 1 1 1
+20	69586 70 0 338 0 1.172606595124 4 0 1 1 1
+21	69656 60 0 202 0 1.169365735741 3 0 2 3 5
+22	69716 10 0 0 0 0 1 0 0 0 0
+23	69726 10 0 0 0 0 1 0 0 0 0
+24	69736 168 0 457 0 1.179580328464 8 0 1 3 3
+25	69904 168 0 457 0 1.179580328464 8 0 1 3 3
+26	70072 166 0 416 0 1.17947742117 8 0 1 3 3
+27	70238 183 0 381 0 1.175126984915 8 0 7 28 140
+28	70421 10 0 0 0 0 1 0 0 0 0
+29	70431 10 0 0 0 0 1 0 0 0 0
+30	70441 120 0 407 0 1.175171488597 6 0 1 2 2
+31	70561 120 0 407 0 1.175171488597 6 0 1 2 2
+32	70681 120 0 364 0 1.175068481233 6 0 1 2 2
+33	70801 134 0 323 0 1.171035761826 6 0 5 15 55
+34	70935 10 0 0 0 0 1 0 0 0 0
+35	70945 10 0 0 0 0 1 0 0 0 0
+36	70955 203 0 465 0 1.179689874817 10 0 3 20 52
+37	71158 10 0 0 0 0 1 0 0 0 0
+38	71168 126 0 312 0 1.17103523367 7 0 3 12 30
+39	71294 10 0 0 0 0 1 0 0 0 0
+40	71304 78 0 267 0 1.17028228517 5 0 3 7 17
+41	71382 10 0 0 0 0 1 0 0 0 0
+42	71392 80 0 348 0 1.172664595124 5 0 3 7 17
+43	71472 10 0 0 0 0 1 0 0 0 0
+44	71482 227 0 426 0 1.17953542117 11 0 3 22 56
+45	71709 10 0 0 0 0 1 0 0 0 0
+46	71719 180 0 374 0 1.175126481233 9 0 3 17 43
+47	71899 10 0 0 0 0 1 0 0 0 0
+48	71909 481 0 465 0 1.179689874817 20 0 3 28 64
+49	72390 1258 0 465 0 1.179689874817 52 0 2 18 34
+50	73648 623 0 468 0 1.179690456545 26 0 3 46 112
+51	74271 1442 0 468 0 1.179690456545 60 0 2 8 16
+52	75713 206 0 375 0 1.175126901524 9 0 3 14 32
+53	75919 510 0 396 0 1.175170901524 22 0 2 4 8
+54	76429 260 0 429 0 1.179535795714 11 0 3 18 42
+55	76689 720 0 452 0 1.179579795714 30 0 2 4 8
+56	77409 678 0 467 0 1.179690328464 28 0 3 44 104
+57	78087 1550 0 467 0 1.179690328464 64 0 2 12 24
+58	79637 508 0 439 0 1.179535924852 21 0 3 32 74
+59	80145 1216 0 455 0 1.179579924852 50 0 2 8 16
+60	81361 11 0 0 0 0 1 31 31 31 961
+61	81372 11 0 0 0 0 1 31 31 31 961
+62	81383 11 0 0 0 0 1 31 31 31 961
+63	81394 11 0 0 0 0 1 31 31 31 961
+64	81405 11 0 0 0 0 1 31 31 31 961
+65	81416 11 0 0 0 0 1 31 31 31 961
+66	81427 23 21 21 0.84426574409 0.84426574409 1 0 0 0 0
+67	81450 51 25 146 0.848224369257 1.168893727256 2 32 32 64 2048
+68	81501 77 28 438 0.848224369257 1.179535874817 3 60 92 212 15664
+69	81578 80 28 438 0.848224369257 1.179535874817 3 704 960 2368 1912832
+70	81658 147 28 149 0.1 1.1 11 0 7040 7040 49561600
+71	81805 148 28 464 0.848224369257 1.179689874817 6 0 1 3 3
+72	81953 154 28 464 0.848224369257 1.179689874817 6 0 960 2368 1912832
+73	82107 75 28 438 0.848224369257 1.179535874817 3 3 25 35 683
+74	82182 81 30 464 0.848224369257 1.179689874817 3 0 0.000154 0.000154 2.3716e-08
+75	82263 80 30 464 0.848224369257 1.179689874817 3 704 960 2368 1912832
+76	82343 147 30 151 0.1 1.1 11 0 7040 7040 49561600
+77	82490 127 30 464 0.848224369257 1.179689874817 4 24000000 24000000 96000000 2.304e+15
+78	82617 104 30 464 0.848224369257 1.179689874817 4 14 120 310 30084
+79	82721 346 31 466 0.848224369257 1.179689874817 14 0 2 15 23
+80	83067 77 38 453 0.848282369257 1.179579874817 3 14 88 190 15684
+81	83144 51 38 159 0.848282369257 1.168951727256 2 88 88 176 15488
+82	83195 51 38 159 0.848282369257 1.168951727256 2 88 88 176 15488
+83	83246 77 38 453 0.848282369257 1.179579874817 3 14 88 190 15684
+84	83323 61 38 159 0.848282369257 1.168951727256 2 5.8e-05 5.8e-05 0.000116 6.728e-09
+85	83384 232 41 457 0.848282822904 1.179580328464 9 14 88 640 53912
+86	83616 206 41 457 0.848282822904 1.179580328464 8 14 88 626 53716
+87	83822 154 41 350 0.848282822904 1.172664969668 6 88 88 528 46464
+88	83976 154 41 350 0.848282822904 1.172664969668 6 88 88 528 46464
+89	84130 206 41 457 0.848282822904 1.179580328464 8 14 88 626 53716
+90	84336 180 41 378 0.848282822904 1.175126984915 7 56 60 416 24736
+91	84516 180 44 381 0.848282822904 1.175126984915 7 28 32 220 6928
+92	84696 256 47 459 0.848282948616 1.179580456544 10 14 88 650 53420
+93	84952 128 47 250 0.848282948616 1.16979439313 5 88 88 440 38720
+94	85080 128 47 250 0.848282948616 1.16979439313 5 88 88 440 38720
+95	85208 128 47 250 0.848282948616 1.16979439313 5 88 88 440 38720
+96	85336 128 47 250 0.848282948616 1.16979439313 5 88 88 440 38720
+97	85464 128 47 250 0.848282948616 1.16979439313 5 60 60 300 18000
+98	85592 128 50 253 0.848282948616 1.16979439313 5 32 32 160 5120
+99	85720 51 56 298 0.850682834473 1.170639289695 2 32 32 64 2048
+100	85771 53 59 301 0.850682834473 1.170639289695 2 60 60 120 7200
+101	85824 55 59 301 0.850682834473 1.170639289695 2 704 704 1408 991232
+102	85879 158 59 301 0.1 1.1 11 0 7040 7040 49561600
+103	86037 101 59 303 0.850682834473 1.17097723367 4 0 1 2 2
+104	86138 105 59 303 0.850682834473 1.17097723367 4 0 704 1408 991232
+105	86243 53 59 301 0.850682834473 1.170639289695 2 24 30 54 1476
+106	86296 63 61 303 0.850682834473 1.17097723367 2 0 0.000337943975 0.000337943975 1.142061302388e-07
+107	86359 54 61 303 0.850682834473 1.17097723367 2 704 704 1408 991232
+108	86413 158 61 303 0.1 1.1 11 0 7040 7040 49561600
+109	86571 64 61 303 0.850682834473 1.17097723367 2 24000000 24000000 48000000 1.152e+15
+110	86635 52 61 303 0.850682834473 1.17097723367 2 88 88 176 15488
+111	86687 200 62 312 0.850682834473 1.17103523367 8 0 2 8 12
+112	86887 52 69 311 0.850740834473 1.17103523367 2 88 88 176 15488
+113	86939 52 69 311 0.850740834473 1.17103523367 2 88 88 176 15488
+114	86991 52 69 311 0.850740834473 1.17103523367 2 88 88 176 15488
+115	87043 52 69 311 0.850740834473 1.17103523367 2 88 88 176 15488
+116	87095 62 69 311 0.850740834473 1.17103523367 2 5.8e-05 5.8e-05 0.000116 6.728e-09
+117	87157 188 78 440 0.850741387325 1.179535924852 7 14 88 534 45284
+118	87345 161 78 407 0.850741387325 1.175171488597 6 14 88 450 38228
+119	87506 107 78 320 0.850741387325 1.171035761826 4 88 88 352 30976
+120	87613 107 78 320 0.850741387325 1.171035761826 4 88 88 352 30976
+121	87720 161 78 407 0.850741387325 1.175171488597 6 14 88 450 38228
+122	87881 134 78 320 0.850741387325 1.171035761826 5 56 60 296 17536
+123	88015 134 81 323 0.850741387325 1.171035761826 5 28 32 156 4880
+124	88149 161 84 432 0.850741413845 1.179535874817 6 14 88 450 38228
+125	88310 134 84 432 0.850741413845 1.179535874817 5 84 88 436 38032
+126	88444 107 84 326 0.850741413845 1.171035815319 4 88 88 352 30976
+127	88551 107 84 326 0.850741413845 1.171035815319 4 88 88 352 30976
+128	88658 134 84 432 0.850741413845 1.179535874817 5 84 88 436 38032
+129	88792 134 84 432 0.850741413845 1.179535874817 5 56 60 296 17536
+130	88926 134 87 435 0.850741413845 1.179535874817 5 28 32 156 4880
+131	89060 79 92 412 0.850927297512 1.17947742117 3 28 32 92 2832
+132	89139 79 95 415 0.850927297512 1.17947742117 3 56 60 176 10336
+133	89218 82 95 415 0.850927297512 1.17947742117 3 672 704 2080 1442816
+134	89300 158 95 180 0.1 1.1 11 0 7040 7040 49561600
+135	89458 152 95 417 0.850927297512 1.17947742117 6 0 1 3 3
+136	89610 158 95 417 0.850927297512 1.17947742117 6 0 704 2080 1442816
+137	89768 78 95 415 0.850927297512 1.17947742117 3 9 18 44 694
+138	89846 89 97 417 0.851131139349 1.17947742117 3 0 0.000203841837 0.000203841837 4.1551494511535e-08
+139	89935 82 97 417 0.851131139349 1.17947742117 3 672 704 2080 1442816
+140	90017 158 97 182 0.1 1.1 11 0 7040 7040 49561600
+141	90175 130 97 417 0.851131139349 1.17947742117 4 24000000 24000000 96000000 2.304e+15
+142	90305 106 97 417 0.851131139349 1.17947742117 4 14 88 274 22740
+143	90411 410 98 426 0.851131139349 1.17953542117 16 0 2 16 24
+144	90821 107 105 425 0.851189139349 1.17953542117 4 14 88 274 22740
+145	90928 54 105 190 0.851189139349 1.169365361197 2 88 88 176 15488
+146	90982 54 105 190 0.851189139349 1.169365361197 2 88 88 176 15488
+147	91036 107 105 425 0.851189139349 1.17953542117 4 14 88 274 22740
+148	91143 103 105 457 0.851189139349 1.179580328464 3 5.8e-05 0.000102907294 0.000218907294 1.7317911158402e-08
+149	91246 108 114 430 0.851189513893 1.179535795714 4 14 88 274 22740
+150	91354 54 114 199 0.851189513893 1.169365735741 2 88 88 176 15488
+151	91408 54 114 199 0.851189513893 1.169365735741 2 88 88 176 15488
+152	91462 54 114 199 0.851189513893 1.169365735741 2 88 88 176 15488
+153	91516 54 114 199 0.851189513893 1.169365735741 2 88 88 176 15488
+154	91570 54 114 199 0.851189513893 1.169365735741 2 60 60 120 7200
+155	91624 54 117 202 0.851189513893 1.169365735741 2 32 32 64 2048
+156	91678 54 218 360 1.169466956875 1.175068481233 2 28 32 60 1808
+157	91732 54 221 363 1.169466956875 1.175068481233 2 56 60 116 6736
+158	91786 56 221 363 1.169466956875 1.175068481233 2 672 704 1376 947200
+159	91842 163 221 221 0.1 1.1 11 0 0 0 0
+160	92005 104 221 365 1.169466956875 1.175068481233 4 0 1 2 2
+161	92109 108 221 365 1.169466956875 1.175068481233 4 0 704 1376 947200
+162	92217 54 221 363 1.169466956875 1.175068481233 2 15 16 31 481
+163	92271 65 223 365 1.169735864879 1.175068481233 2 0 0.000268908004 0.000268908004 7.2311514615264e-08
+164	92336 56 223 365 1.169735864879 1.175068481233 2 672 704 1376 947200
+165	92392 163 223 223 0.1 1.1 11 0 0 0 0
+166	92555 99 223 365 1.169735864879 1.175068481233 3 24000000 24000000 72000000 1.728e+15
+167	92654 81 223 365 1.169735864879 1.175068481233 3 14 88 186 14996
+168	92735 312 224 374 1.169735864879 1.175126481233 12 0 2 12 18
+169	93047 81 231 373 1.169793864879 1.175126481233 3 14 88 186 14996
+170	93128 27 231 231 1.169793864879 1.169793864879 1 88 88 88 7744
+171	93155 27 231 231 1.169793864879 1.169793864879 1 88 88 88 7744
+172	93182 81 231 373 1.169793864879 1.175126481233 3 14 88 186 14996
+173	93263 71 231 407 1.169793864879 1.175171488597 2 5.8e-05 0.000103007364 0.000161007364 1.3974517038228e-08
+174	93334 80 234 376 1.16979428517 1.175126901524 3 14 88 186 14996
+175	93414 53 234 290 1.16979428517 1.170327125752 2 14 88 102 7940
+176	93467 26 234 234 1.16979428517 1.16979428517 1 88 88 88 7744
+177	93493 26 234 234 1.16979428517 1.16979428517 1 88 88 88 7744
+178	93519 53 234 290 1.16979428517 1.170327125752 2 14 88 102 7940
+179	93572 26 234 234 1.16979428517 1.16979428517 1 60 60 60 3600
+180	93598 26 237 237 1.16979428517 1.16979428517 1 32 32 32 1024
+181	93624 26 239 239 1.16979428517 1.16979428517 1 28 28 28 784
+182	93650 26 242 242 1.16979428517 1.16979428517 1 56 56 56 3136
+183	93676 27 242 242 1.16979428517 1.16979428517 1 672 672 672 451584
+184	93703 163 242 242 0.1 1.1 11 0 0 0 0
+185	93866 50 242 258 1.16979428517 1.17022428517 2 0 1 1 1
+186	93916 52 242 258 1.16979428517 1.17022428517 2 0 672 672 451584
+187	93968 26 242 242 1.16979428517 1.16979428517 1 19 19 19 361
+188	93994 31 258 258 1.17022428517 1.17022428517 1 0.00043 0.00043 0.00043 1.849e-07
+189	94025 27 258 258 1.17022428517 1.17022428517 1 672 672 672 451584
+190	94052 163 258 258 0.1 1.1 11 0 0 0 0
+191	94215 32 258 258 1.17022428517 1.17022428517 1 24000000 24000000 24000000 5.76e+14
+192	94247 26 258 258 1.17022428517 1.17022428517 1 84 84 84 7056
+193	94273 100 259 267 1.17022428517 1.17028228517 4 0 2 4 6
+194	94373 26 266 266 1.17028228517 1.17028228517 1 84 84 84 7056
+195	94399 26 266 266 1.17028228517 1.17028228517 1 84 84 84 7056
+196	94425 26 266 266 1.17028228517 1.17028228517 1 84 84 84 7056
+197	94451 165 266 396 1.17028228517 1.175170901524 6 0 4.4e-05 8.8e-05 3.872e-09
+198	94616 54 269 407 1.170282705461 1.175171488597 2 14 84 98 7252
+199	94670 54 287 373 1.170326705461 1.175126481233 2 14 84 98 7252
+200	94724 27 290 290 1.170327125752 1.170327125752 1 14 14 14 196
+201	94751 39 290 290 1.170327125752 1.170327125752 1 0.000102840582 0.000102840582 0.000102840582 1.0576185306099e-08
+202	94790 27 292 292 1.170327209143 1.170327209143 1 14 14 14 196
+203	94817 27 292 292 1.170327209143 1.170327209143 1 14 14 14 196
+204	94844 27 292 292 1.170327209143 1.170327209143 1 14 14 14 196
+205	94871 27 292 292 1.170327209143 1.170327209143 1 14 14 14 196
+206	94898 133 294 459 1.17032723367 1.179580456544 5 14 84 210 14700
+207	95031 133 294 459 1.17032723367 1.179580456544 5 14 84 210 14700
+208	95164 133 294 459 1.17032723367 1.179580456544 5 14 84 210 14700
+209	95297 133 294 459 1.17032723367 1.179580456544 5 14 84 210 14700
+210	95430 27 334 334 1.172606595124 1.172606595124 1 32 32 32 1024
+211	95457 27 337 337 1.172606595124 1.172606595124 1 60 60 60 3600
+212	95484 28 337 337 1.172606595124 1.172606595124 1 704 704 704 495616
+213	95512 163 337 337 0.1 1.1 11 0 0 0 0
+214	95675 52 337 339 1.172606595124 1.172606595124 2 0 1 1 1
+215	95727 54 337 339 1.172606595124 1.172606595124 2 0 704 704 495616
+216	95781 27 337 337 1.172606595124 1.172606595124 1 15 15 15 225
+217	95808 26 339 339 1.172606595124 1.172606595124 1 0 0 0 0
+218	95834 28 339 339 1.172606595124 1.172606595124 1 704 704 704 495616
+219	95862 163 339 339 0.1 1.1 11 0 0 0 0
+220	96025 33 339 339 1.172606595124 1.172606595124 1 24000000 24000000 24000000 5.76e+14
+221	96058 27 339 339 1.172606595124 1.172606595124 1 88 88 88 7744
+222	96085 104 340 348 1.172606595124 1.172664595124 4 0 2 4 6
+223	96189 27 347 347 1.172664595124 1.172664595124 1 88 88 88 7744
+224	96216 27 347 347 1.172664595124 1.172664595124 1 88 88 88 7744
+225	96243 27 347 347 1.172664595124 1.172664595124 1 88 88 88 7744
+226	96270 27 347 347 1.172664595124 1.172664595124 1 88 88 88 7744
+227	96297 32 347 347 1.172664595124 1.172664595124 1 5.8e-05 5.8e-05 5.8e-05 3.364e-09
+228	96329 168 373 455 1.175126481233 1.179579924852 6 0 4.4e-05 8.8e-05 3.872e-09
+229	96497 27 376 376 1.175126901524 1.175126901524 1 84 84 84 7056
+230	96524 27 376 376 1.175126901524 1.175126901524 1 84 84 84 7056
+231	96551 27 376 376 1.175126901524 1.175126901524 1 84 84 84 7056
+232	96578 27 376 376 1.175126901524 1.175126901524 1 84 84 84 7056
+233	96605 54 378 457 1.175126984915 1.179580328464 2 14 84 98 7252
+234	96659 168 384 451 1.175127009075 1.179579706496 6 0 4.4e-05 8.8e-05 3.872e-09
+235	96827 53 397 425 1.175170984915 1.17953542117 2 14 84 98 7252
+236	96880 54 403 430 1.175171359459 1.179535795714 2 14 84 98 7252
+237	96934 54 403 430 1.175171359459 1.179535795714 2 14 84 98 7252
+238	96988 54 403 430 1.175171359459 1.179535795714 2 14 84 98 7252
+239	97042 54 403 430 1.175171359459 1.179535795714 2 14 84 98 7252
+240	97096 27 405 405 1.175171438562 1.175171438562 1 14 14 14 196
+241	97123 27 405 405 1.175171438562 1.175171438562 1 14 14 14 196
+242	97150 27 405 405 1.175171438562 1.175171438562 1 14 14 14 196
+243	97177 27 405 405 1.175171438562 1.175171438562 1 14 14 14 196
+244	97204 81 425 450 1.17953542117 1.17957942117 3 0 4.4e-05 4.4e-05 1.936e-09
+245	97285 84 430 452 1.179535795714 1.179579795714 3 0 4.4e-05 4.4e-05 1.936e-09
+246	97369 27 432 432 1.179535874817 1.179535874817 1 84 84 84 7056
+247	97396 27 440 440 1.179535924852 1.179535924852 1 84 84 84 7056
+248	97423 27 440 440 1.179535924852 1.179535924852 1 84 84 84 7056
+249	97450 27 440 440 1.179535924852 1.179535924852 1 84 84 84 7056
+250	97477 27 440 440 1.179535924852 1.179535924852 1 84 84 84 7056
+251	97504 27 453 453 1.179579874817 1.179579874817 1 14 14 14 196
+vector 252 ManetprotocolsShowcaseB.source.wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 253 ManetprotocolsShowcaseB.source.app[0] pingRxSeq:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "ping rx seq"
+vector 254 ManetprotocolsShowcaseB.source.app[0] rtt:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "ping round-trip time"
+attr unit s
+0	98048 71 503 795 1.179804782111 1.844380651384 3 0 1 1 1
+1	98119 71 503 795 1.179804782111 1.844380651384 3 0 1 1 1
+2	98190 46 757 758 1.84426574409 1.84426574409 2 0 1 1 1
+12	98236 50 601 633 1.181383252437 1.181498093019 2 0 1 1 1
+13	98286 50 601 633 1.181383252437 1.181498093019 2 0 1 1 1
+14	98336 100 573 600 1.180909252437 1.181383252437 4 0 1 2 2
+24	98436 99 510 725 1.180334328464 1.182787083704 4 0 1 2 2
+25	98535 99 510 725 1.180334328464 1.182787083704 4 0 1 2 2
+26	98634 271 479 789 1.179760328464 1.844380197737 11 0 1 6 6
+30	98905 100 556 683 1.180838832146 1.182242680092 4 0 1 2 2
+31	99005 100 556 683 1.180838832146 1.182242680092 4 0 1 2 2
+32	99105 200 531 640 1.180404832146 1.182127672728 8 0 1 4 4
+36	99305 123 473 768 1.179759874817 1.84433574409 5 2 3 12 30
+40	99428 100 581 610 1.180919252437 1.181453252437 4 2 3 10 26
+44	99528 246 486 789 1.179770328464 1.844380197737 10 2 3 25 65
+46	99774 200 534 650 1.180414832146 1.182197672728 8 2 3 20 52
+48	99974 373 473 794 1.179759874817 1.844380651384 15 0 3 23 53
+49	100347 744 502 794 1.179804782111 1.844380651384 30 0 2 4 8
+50	101091 523 480 790 1.179760456545 1.844380448082 21 1 3 41 101
+51	101614 1144 480 790 1.179760456545 1.844380448082 46 0 0 0 0
+52	102758 300 536 651 1.180415252437 1.182198093019 12 0 3 18 42
+53	103058 700 536 672 1.180415252437 1.182242093019 28 0 2 10 18
+54	103758 250 489 792 1.179770703008 1.844380572281 10 1 3 20 50
+55	104008 700 489 792 1.179770703008 1.844380572281 28 0 0 0 0
+56	104708 567 474 789 1.179760328464 1.844380197737 23 0 3 30 66
+57	105275 1282 474 789 1.179760328464 1.844380197737 52 0 2 28 50
+58	106557 550 491 796 1.179770832146 1.844380701419 22 0 3 32 74
+59	107107 1200 491 796 1.179770832146 1.844380701419 48 0 2 20 36
+66	108307 24 754 754 1.84426574409 1.84426574409 1 1 1 1 1
+68	108331 25 757 757 1.84426574409 1.84426574409 1 92 92 92 8464
+69	108356 26 757 757 1.84426574409 1.84426574409 1 960 960 960 921600
+70	108382 102 757 757 1.2 1.8 7 0 16640 16640 276889600
+71	108484 48 757 759 1.84426574409 1.84426574409 2 0 1 1 1
+72	108532 50 757 759 1.84426574409 1.84426574409 2 0 960 960 921600
+73	108582 25 757 757 1.84426574409 1.84426574409 1 19 19 19 361
+74	108607 24 759 759 1.84426574409 1.84426574409 1 0 0 0 0
+75	108631 26 759 759 1.84426574409 1.84426574409 1 960 960 960 921600
+76	108657 102 759 759 1.2 1.8 7 0 16640 16640 276889600
+77	108759 63 702 759 1.182742630057 1.84426574409 2 24000000 24000000 48000000 1.152e+15
+78	108822 52 710 759 1.182752630057 1.84426574409 2 14 120 134 14596
+79	108874 246 472 768 1.179759874817 1.84433574409 10 0 2 9 13
+80	109120 79 472 767 1.179759874817 1.84433574409 3 14 120 254 28996
+83	109199 79 472 767 1.179759874817 1.84433574409 3 14 120 254 28996
+84	109278 76 503 795 1.179804782111 1.844380651384 2 0.000114907294 0.000114907294 0.000229814588 2.6407372428805e-08
+85	109354 184 475 770 1.179760328464 1.844336197737 7 14 120 522 58188
+86	109538 132 475 770 1.179760328464 1.844336197737 5 14 120 388 43592
+89	109670 132 475 770 1.179760328464 1.844336197737 5 14 120 388 43592
+90	109802 77 475 770 1.179760328464 1.844336197737 3 92 92 276 25392
+92	109879 290 481 791 1.179760456545 1.844380448082 11 14 120 684 73176
+117	110169 192 505 797 1.179804832146 1.844380701419 7 14 120 416 43984
+118	110361 110 527 683 1.180404832146 1.182242680092 4 14 120 268 29192
+121	110471 110 527 683 1.180404832146 1.182242680092 4 14 120 268 29192
+122	110581 54 527 612 1.180404832146 1.181453672728 2 92 92 184 16928
+124	110635 137 503 795 1.179804782111 1.844380651384 5 14 120 282 29388
+125	110772 82 503 795 1.179804782111 1.844380651384 3 14 120 148 14792
+128	110854 82 503 795 1.179804782111 1.844380651384 3 14 120 148 14792
+129	110936 27 702 702 1.182742630057 1.182742630057 1 92 92 92 8464
+132	110963 80 479 774 1.179760328464 1.844336197737 3 92 92 276 25392
+133	111043 83 479 774 1.179760328464 1.844336197737 3 960 960 2880 2764800
+134	111126 109 774 774 1.2 1.8 7 0 32960 32960 1086361600
+135	111235 128 479 774 1.179760328464 1.844336197737 5 0 1 3 3
+136	111363 134 479 774 1.179760328464 1.844336197737 5 0 960 2880 2764800
+137	111497 80 479 774 1.179760328464 1.844336197737 3 14 24 57 1133
+138	111577 65 510 687 1.180334328464 1.18267217641 2 0.000474 0.000574 0.001048 5.54152e-07
+139	111642 55 510 687 1.180334328464 1.18267217641 2 960 960 1920 1843200
+141	111697 163 475 770 1.179760328464 1.844336197737 5 24000000 24000000 120000000 2.88e+15
+142	111860 135 485 779 1.179770328464 1.844346197737 5 14 120 282 29388
+143	111995 512 486 789 1.179770328464 1.844380197737 20 0 2 20 30
+144	112507 135 495 788 1.179804328464 1.844380197737 5 14 120 282 29388
+147	112642 135 495 788 1.179804328464 1.844380197737 5 14 120 282 29388
+148	112777 78 550 725 1.180449335828 1.182787083704 2 0.000114907294 0.000115007364 0.000229914658 2.6430379988631e-08
+149	112855 137 501 793 1.179804703008 1.844380572281 5 14 120 282 29388
+157	112992 54 531 616 1.180404832146 1.181453672728 2 92 92 184 16928
+158	113046 56 531 616 1.180404832146 1.181453672728 2 960 960 1920 1843200
+160	113102 104 531 641 1.180404832146 1.182127672728 4 0 1 2 2
+161	113206 108 531 641 1.180404832146 1.182127672728 4 0 960 1920 1843200
+162	113314 54 531 616 1.180404832146 1.181453672728 2 17 29 46 1130
+163	113368 66 556 641 1.180838832146 1.182127672728 2 0.000434 0.000674 0.001108 6.42632e-07
+164	113434 56 556 641 1.180838832146 1.182127672728 2 960 960 1920 1843200
+166	113490 132 527 641 1.180404832146 1.182127672728 4 24000000 24000000 96000000 2.304e+15
+167	113622 110 533 641 1.180414832146 1.182127672728 4 14 120 268 29192
+168	113732 416 534 650 1.180414832146 1.182197672728 16 0 2 16 24
+169	114148 110 545 649 1.180448832146 1.182197672728 4 14 120 268 29192
+172	114258 110 545 649 1.180448832146 1.182197672728 4 14 120 268 29192
+173	114368 78 594 683 1.180953672728 1.182242680092 2 0.000114840582 0.000115007364 0.000229847946 2.6415053048327e-08
+174	114446 110 548 652 1.180449252437 1.182198093019 4 14 120 268 29192
+175	114556 55 567 633 1.180909252437 1.181498093019 2 14 120 134 14596
+178	114611 55 567 633 1.180909252437 1.181498093019 2 14 120 134 14596
+179	114666 27 567 567 1.180909252437 1.180909252437 1 92 92 92 8464
+182	114693 27 573 573 1.180909252437 1.180909252437 1 92 92 92 8464
+183	114720 28 573 573 1.180909252437 1.180909252437 1 960 960 960 921600
+185	114748 52 573 601 1.180909252437 1.181383252437 2 0 1 1 1
+186	114800 54 573 601 1.180909252437 1.181383252437 2 0 960 960 921600
+187	114854 27 573 573 1.180909252437 1.180909252437 1 19 19 19 361
+188	114881 33 601 601 1.181383252437 1.181383252437 1 0.000474 0.000474 0.000474 2.24676e-07
+189	114914 28 601 601 1.181383252437 1.181383252437 1 960 960 960 921600
+191	114942 66 567 601 1.180909252437 1.181383252437 2 24000000 24000000 48000000 1.152e+15
+192	115008 55 580 601 1.180919252437 1.181383252437 2 14 120 134 14596
+193	115063 208 581 610 1.180919252437 1.181453252437 8 0 2 8 12
+194	115271 55 589 609 1.180953252437 1.181453252437 2 14 120 134 14596
+195	115326 55 589 609 1.180953252437 1.181453252437 2 14 120 134 14596
+196	115381 55 589 609 1.180953252437 1.181453252437 2 14 120 134 14596
+197	115436 168 609 672 1.181453252437 1.182242093019 6 0 4.4e-05 8.8e-05 3.872e-09
+198	115604 110 527 683 1.180404832146 1.182242680092 4 14 120 268 29192
+199	115714 110 545 649 1.180448832146 1.182197672728 4 14 120 268 29192
+200	115824 55 567 633 1.180909252437 1.181498093019 2 14 120 134 14596
+201	115879 39 633 633 1.181498093019 1.181498093019 1 0.000114840582 0.000114840582 0.000114840582 1.3188359274099e-08
+202	115918 54 575 635 1.180909335828 1.18149817641 2 14 120 134 14596
+203	115972 54 575 635 1.180909335828 1.18149817641 2 14 120 134 14596
+204	116026 54 575 635 1.180909335828 1.18149817641 2 14 120 134 14596
+205	116080 54 575 635 1.180909335828 1.18149817641 2 14 120 134 14596
+206	116134 301 481 791 1.179760456545 1.844380448082 11 14 120 684 73176
+207	116435 301 481 791 1.179760456545 1.844380448082 11 14 120 684 73176
+208	116736 301 481 791 1.179760456545 1.844380448082 11 14 120 684 73176
+209	117037 301 481 791 1.179760456545 1.844380448082 11 14 120 684 73176
+228	117338 252 564 723 1.180908832146 1.182786680092 9 0 4.4e-05 0.000132 5.808e-09
+229	117590 55 548 652 1.180449252437 1.182198093019 2 14 120 134 14596
+230	117645 55 548 652 1.180449252437 1.182198093019 2 14 120 134 14596
+231	117700 55 548 652 1.180449252437 1.182198093019 2 14 120 134 14596
+232	117755 55 548 652 1.180449252437 1.182198093019 2 14 120 134 14596
+233	117810 137 475 770 1.179760328464 1.844336197737 5 14 120 388 43592
+234	117947 417 481 719 1.179760456545 1.182786461552 15 0 4.4e-05 0.00022 9.68e-09
+235	118364 135 495 788 1.179804328464 1.844380197737 5 14 120 282 29388
+236	118499 137 501 793 1.179804703008 1.844380572281 5 14 120 282 29388
+237	118636 137 501 793 1.179804703008 1.844380572281 5 14 120 282 29388
+238	118773 137 501 793 1.179804703008 1.844380572281 5 14 120 282 29388
+239	118910 137 501 793 1.179804703008 1.844380572281 5 14 120 282 29388
+240	119047 55 525 681 1.180404782111 1.182242630057 2 14 120 134 14596
+241	119102 55 525 681 1.180404782111 1.182242630057 2 14 120 134 14596
+242	119157 55 525 681 1.180404782111 1.182242630057 2 14 120 134 14596
+243	119212 55 525 681 1.180404782111 1.182242630057 2 14 120 134 14596
+244	119267 249 518 718 1.180404328464 1.18278617641 9 0 4.4e-05 0.000132 5.808e-09
+245	119516 168 523 720 1.180404703008 1.182786550954 6 0 4.4e-05 8.8e-05 3.872e-09
+246	119684 82 503 795 1.179804782111 1.844380651384 3 14 120 148 14792
+247	119766 82 505 797 1.179804832146 1.844380701419 3 14 120 148 14792
+248	119848 82 505 797 1.179804832146 1.844380701419 3 14 120 148 14792
+249	119930 82 505 797 1.179804832146 1.844380701419 3 14 120 148 14792
+250	120012 82 505 797 1.179804832146 1.844380701419 3 14 120 148 14792
+251	120094 82 472 767 1.179759874817 1.84433574409 3 14 120 254 28996
+252	120176 249 472 787 1.179759874817 1.84437974409 9 0 4.4e-05 0.000132 5.808e-09
+253	120425 26 705 705 1.182742630057 1.182742630057 1 0 0 0 0
+254	120451 39 705 705 1.182742630057 1.182742630057 1 0.338476885967 0.338476885967 0.338476885967 0.11456660233392
+70	120490 39 797 797 1.844380781503 1.844380781503 1 21630.984572345 21630.984572345 21630.984572345 467899493.56902
+76	120529 39 797 797 1.844380781503 1.844380781503 1 21630.984572345 21630.984572345 21630.984572345 467899493.56902
+102	120568 134 797 797 1.2 1.844380781503 8 0 7040 7040 49561600
+108	120702 134 797 797 1.2 1.844380781503 8 0 7040 7040 49561600
+134	120836 40 797 797 1.844380781503 1.844380781503 1 21630.984572345 21630.984572345 21630.984572345 467899493.56902
+140	120876 135 797 797 1.2 1.844380781503 8 0 32960 32960 1086361600
+159	121011 135 797 797 1.2 1.844380781503 8 0 32960 32960 1086361600
+165	121146 135 797 797 1.2 1.844380781503 8 0 32960 32960 1086361600
+184	121281 135 797 797 1.2 1.844380781503 8 0 16320 16320 266342400
+190	121416 135 797 797 1.2 1.844380781503 8 0 16320 16320 266342400
+213	121551 134 797 797 1.2 1.844380781503 8 0 7040 7040 49561600
+219	121685 134 797 797 1.2 1.844380781503 8 0 7040 7040 49561600
+

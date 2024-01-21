@@ -1,0 +1,472 @@
+file 19893 1701219578                                           
+version 3
+run MobileNodesBase-0-20231129-07:59:33-16376
+attr configname MobileNodesBase
+attr datetime 20231129-07:59:33
+attr datetimef 20231129-075933
+attr experiment MobileNodesBase
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network ManetprotocolsShowcaseB
+attr processid 16376
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../images
+config network ManetprotocolsShowcaseB
+config **.transmitter.power 1mW
+config *.node*.mobility.typename LinearMobility
+config *.node*.mobility.initialMovementHeading uniform(0deg,360deg)
+config *.node*.mobility.speed 25mps
+config **.constraintAreaMaxX 500m
+config **.constraintAreaMaxY 500m
+config **.constraintAreaMinX 0m
+config **.constraintAreaMinY 0m
+config *.visualizer.*.routingTableVisualizer[0].displayLabels false
+config *.visualizer.*.routingTableVisualizer[0].displayRoutesIndividually false
+config *.visualizer.*.routingTableVisualizer[0].lineShift 0
+config *.visualizer.*.networkRouteVisualizer[0].displayRoutes true
+config *.visualizer.*.networkRouteVisualizer[0].packetFilter "\"*ping*\""
+config *.visualizer.*.interfaceTableVisualizer[0].displayInterfaceTables true
+config *.visualizer.*.interfaceTableVisualizer[0].format "\"%a/%l\""
+config *.source.numApps 1
+config *.source.app[0].typename PingApp
+config *.source.app[0].destAddr "\"destination\""
+config *.source.app[0].printPing true
+config *.visualizer.*.numDataLinkVisualizers 5
+config *.visualizer.*.dataLinkVisualizer[*].activityLevel "\"peer\""
+config *.visualizer.*.dataLinkVisualizer[*].displayLinks true
+config *.visualizer.*.dataLinkVisualizer[0].packetFilter "\"aodv::Rreq\""
+config *.visualizer.*.dataLinkVisualizer[1].packetFilter "\"ping* or UDP*\""
+config *.visualizer.*.dataLinkVisualizer[1].*Color "\"blue\""
+config *.visualizer.*.dataLinkVisualizer[2].packetFilter "\"aodv::Rrep\""
+config *.visualizer.*.dataLinkVisualizer[2].*Color "\"darkslategray\""
+config *.visualizer.*.dataLinkVisualizer[3].packetFilter "\"aodv::Rerr\""
+config *.visualizer.*.dataLinkVisualizer[3].*Color "\"red\""
+config *.visualizer.*.dataLinkVisualizer[4].packetFilter "\"Hello\""
+config *.visualizer.*.dataLinkVisualizer[4].*Color "\"green\""
+config **.wlan[*].bitrate 24Mbps
+config *.configurator.addStaticRoutes false
+config **.netmaskRoutes "\"\""
+config **.arp.typename GlobalArp
+
+vector 0 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 1 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 2 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 3 ManetprotocolsShowcaseB.source.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 4 ManetprotocolsShowcaseB.source.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 5 ManetprotocolsShowcaseB.source.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 6 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 7 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 8 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 9 ManetprotocolsShowcaseB.node2.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 10 ManetprotocolsShowcaseB.node2.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 11 ManetprotocolsShowcaseB.node2.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 12 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 13 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 14 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 15 ManetprotocolsShowcaseB.destination.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 16 ManetprotocolsShowcaseB.destination.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 17 ManetprotocolsShowcaseB.destination.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 18 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 19 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 20 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 21 ManetprotocolsShowcaseB.manetRouter.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 22 ManetprotocolsShowcaseB.manetRouter.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 23 ManetprotocolsShowcaseB.manetRouter.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 24 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 25 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 26 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 27 ManetprotocolsShowcaseB.manetRouter1.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 28 ManetprotocolsShowcaseB.manetRouter1.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 29 ManetprotocolsShowcaseB.manetRouter1.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 30 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 31 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 32 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 33 ManetprotocolsShowcaseB.manetRouter4.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 34 ManetprotocolsShowcaseB.manetRouter4.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 35 ManetprotocolsShowcaseB.manetRouter4.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 36 ManetprotocolsShowcaseB.source.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 37 ManetprotocolsShowcaseB.source.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 38 ManetprotocolsShowcaseB.node2.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 39 ManetprotocolsShowcaseB.node2.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 40 ManetprotocolsShowcaseB.destination.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 41 ManetprotocolsShowcaseB.destination.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 42 ManetprotocolsShowcaseB.manetRouter.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 43 ManetprotocolsShowcaseB.manetRouter.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 44 ManetprotocolsShowcaseB.manetRouter1.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 45 ManetprotocolsShowcaseB.manetRouter1.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 46 ManetprotocolsShowcaseB.manetRouter4.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 47 ManetprotocolsShowcaseB.manetRouter4.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 48 ManetprotocolsShowcaseB.source.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 49 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 50 ManetprotocolsShowcaseB.node2.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 51 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 52 ManetprotocolsShowcaseB.destination.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 53 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 54 ManetprotocolsShowcaseB.manetRouter.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 55 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 56 ManetprotocolsShowcaseB.manetRouter1.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 57 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 58 ManetprotocolsShowcaseB.manetRouter4.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 59 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 60 ManetprotocolsShowcaseB.source.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 61 ManetprotocolsShowcaseB.node2.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 62 ManetprotocolsShowcaseB.destination.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 63 ManetprotocolsShowcaseB.manetRouter.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 64 ManetprotocolsShowcaseB.manetRouter1.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 65 ManetprotocolsShowcaseB.manetRouter4.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+0	18881 18 0 0 0 0 2 0 0 0 0
+1	18899 18 0 0 0 0 2 0 0 0 0
+2	18917 18 0 0 0 0 2 0 0 0 0
+3	18935 9 0 0 0 0 1 0 0 0 0
+4	18944 9 0 0 0 0 1 0 0 0 0
+5	18953 9 0 0 0 0 1 0 0 0 0
+6	18962 18 0 0 0 0 2 0 0 0 0
+7	18980 18 0 0 0 0 2 0 0 0 0
+8	18998 18 0 0 0 0 2 0 0 0 0
+9	19016 9 0 0 0 0 1 0 0 0 0
+10	19025 10 0 0 0 0 1 0 0 0 0
+11	19035 10 0 0 0 0 1 0 0 0 0
+12	19045 20 0 0 0 0 2 0 0 0 0
+13	19065 20 0 0 0 0 2 0 0 0 0
+14	19085 20 0 0 0 0 2 0 0 0 0
+15	19105 10 0 0 0 0 1 0 0 0 0
+16	19115 10 0 0 0 0 1 0 0 0 0
+17	19125 10 0 0 0 0 1 0 0 0 0
+18	19135 20 0 0 0 0 2 0 0 0 0
+19	19155 20 0 0 0 0 2 0 0 0 0
+20	19175 20 0 0 0 0 2 0 0 0 0
+21	19195 10 0 0 0 0 1 0 0 0 0
+22	19205 10 0 0 0 0 1 0 0 0 0
+23	19215 10 0 0 0 0 1 0 0 0 0
+24	19225 20 0 0 0 0 2 0 0 0 0
+25	19245 20 0 0 0 0 2 0 0 0 0
+26	19265 20 0 0 0 0 2 0 0 0 0
+27	19285 10 0 0 0 0 1 0 0 0 0
+28	19295 10 0 0 0 0 1 0 0 0 0
+29	19305 10 0 0 0 0 1 0 0 0 0
+30	19315 20 0 0 0 0 2 0 0 0 0
+31	19335 20 0 0 0 0 2 0 0 0 0
+32	19355 20 0 0 0 0 2 0 0 0 0
+33	19375 10 0 0 0 0 1 0 0 0 0
+34	19385 10 0 0 0 0 1 0 0 0 0
+35	19395 10 0 0 0 0 1 0 0 0 0
+36	19405 30 0 0 0 0 3 0 2 2 4
+37	19435 10 0 0 0 0 1 0 0 0 0
+38	19445 30 0 0 0 0 3 0 2 2 4
+39	19475 10 0 0 0 0 1 0 0 0 0
+40	19485 30 0 0 0 0 3 0 2 2 4
+41	19515 10 0 0 0 0 1 0 0 0 0
+42	19525 30 0 0 0 0 3 0 2 2 4
+43	19555 10 0 0 0 0 1 0 0 0 0
+44	19565 30 0 0 0 0 3 0 2 2 4
+45	19595 10 0 0 0 0 1 0 0 0 0
+46	19605 30 0 0 0 0 3 0 2 2 4
+47	19635 10 0 0 0 0 1 0 0 0 0
+48	19645 10 0 0 0 0 1 1 1 1 1
+49	19655 20 0 0 0 0 2 0 0 0 0
+50	19675 10 0 0 0 0 1 1 1 1 1
+51	19685 20 0 0 0 0 2 0 0 0 0
+52	19705 10 0 0 0 0 1 1 1 1 1
+53	19715 20 0 0 0 0 2 0 0 0 0
+54	19735 10 0 0 0 0 1 1 1 1 1
+55	19745 20 0 0 0 0 2 0 0 0 0
+56	19765 10 0 0 0 0 1 1 1 1 1
+57	19775 20 0 0 0 0 2 0 0 0 0
+58	19795 10 0 0 0 0 1 1 1 1 1
+59	19805 20 0 0 0 0 2 0 0 0 0
+60	19825 11 0 0 0 0 1 31 31 31 961
+61	19836 11 0 0 0 0 1 31 31 31 961
+62	19847 11 0 0 0 0 1 31 31 31 961
+63	19858 11 0 0 0 0 1 31 31 31 961
+64	19869 11 0 0 0 0 1 31 31 31 961
+65	19880 11 0 0 0 0 1 31 31 31 961
+
